@@ -1,13 +1,10 @@
-var React = require("./node_modules/react/cjs/react.development.js");
-var ReactDOM = require("./node_modules/react-dom/cjs/react-dom.development.js");
+import React from "react";
+import ReactDOM from "react-dom";
 
 class Hello extends React.Component {
   render() {
-    return React.createElement("div", null, `Hello ${this.props.toWhat}`);
+    return <h1>Hello World!</h1>;
   }
 }
 
-ReactDOM.render(
-  React.createElement("h1", null, "Hello world!"),
-  document.getElementById("app")
-);
+ReactDOM.render(<Hello />, document.getElementById("app"));
