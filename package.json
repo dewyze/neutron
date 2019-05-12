@@ -5,7 +5,8 @@
   "description": "Novel writing app",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -25,7 +26,11 @@
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
-    "electron": "^5.0.1"
+    "@babel/register": "^7.4.4",
+    "babel-loader": "^8.0.6",
+    "electron": "^5.0.1",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2"
   },
   "dependencies": {
     "react": "^16.8.6",
