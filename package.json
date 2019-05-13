@@ -1,8 +1,8 @@
 {
-  "name": "novel",
-  "productName": "Novel",
+  "name": "neutron",
+  "productName": "Neutron",
   "version": "0.0.1",
-  "description": "Novel writing app",
+  "description": "Electron base",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -10,12 +10,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dewyze/novel"
+    "url": "git+https://github.com/dewyze/neutron"
   },
   "author": {
     "name": "Electron React Boilerplte Maintainers",
-    "email": "novel@dewyze.io",
-    "url": "novelwriter.app"
+    "email": "neutron@dewyze.io"
   },
   "devEngines": {
     "node": ">=10.15.3",
@@ -30,7 +29,8 @@
     "babel-loader": "^8.0.6",
     "electron": "^5.0.1",
     "webpack": "^4.31.0",
-    "webpack-cli": "^3.3.2"
+    "webpack-cli": "^3.3.2",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
     "react": "^16.8.6",
