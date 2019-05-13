@@ -2,7 +2,7 @@
   "name": "neutron",
   "productName": "Neutron",
   "version": "0.0.1",
-  "description": "Electron skeleton",
+  "description": "Electron base",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -29,7 +29,8 @@
     "babel-loader": "^8.0.6",
     "electron": "^5.0.1",
     "webpack": "^4.31.0",
-    "webpack-cli": "^3.3.2"
+    "webpack-cli": "^3.3.2",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
     "react": "^16.8.6",
