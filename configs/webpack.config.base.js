@@ -1,11 +1,12 @@
 import path from "path";
 import webpack from "webpack";
+import { dependencies } from "../package.json";
 
 export default {
   mode: "development",
-  externals: ["react", "react-dom"],
+  externals: [...Object.keys(dependencies || {})],
   entry: {
-    main: "./renderer.js"
+    main: ["./renderer.js"]
   },
   module: {
     rules: [
@@ -33,7 +34,7 @@ export default {
   },
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "[name].js",
+    // filename: "[name].js",
     // sourceMapFilename: "[name].map",
     libraryTarget: "commonjs2"
     // publicPath: "http://localhost:8080/assets/"
