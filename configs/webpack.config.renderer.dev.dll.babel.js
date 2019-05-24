@@ -1,7 +1,7 @@
-import webpack from 'webpack';
-import path from 'path';
-import merge from 'webpack-merge';
 import baseConfig from './webpack.config.base';
+import merge from 'webpack-merge';
+import path from 'path';
+import webpack from 'webpack';
 import { dependencies } from '../package.json';
 
 const dist = path.join(__dirname, '..', 'dll');
