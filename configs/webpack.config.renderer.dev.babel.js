@@ -10,6 +10,10 @@ export default merge.smart(baseConfig, {
     filename: 'renderer.dev.js'
   },
 
+  entry: {
+    filename: './renderer.js'
+  },
+
   module: {
     rules: [
       // Common Image Formats
