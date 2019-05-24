@@ -5,9 +5,6 @@ import { dependencies } from "../package.json";
 export default {
   mode: "development",
   externals: [...Object.keys(dependencies || {})],
-  entry: {
-    main: ["./renderer.js"]
-  },
   module: {
     rules: [
       {
