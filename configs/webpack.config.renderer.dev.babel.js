@@ -35,13 +35,15 @@ export default merge.smart(baseConfig, {
   target: "electron-renderer",
 
   output: {
-    path: dist,
+    publicPath: `http://localhost:${port}/dist/`,
     filename: "renderer.dev.js"
   },
 
-  entry: {
-    filename: "./renderer.js"
-  },
+  entry: [
+    `webpack-dev-server/client?http://localhost:${port}/`,
+    "webpack/hot/only-dev-server",
+    require.resolve("../renderer.js")
+  ],
 
   module: {
     rules: [
@@ -60,7 +62,12 @@ export default merge.smart(baseConfig, {
           context: path.join(__dirname, "..", "dll"),
           manifest: require(manifest),
           sourceType: "var"
-        })
+        }),
+    new webpack.HotModuleReplacementPlugin({
+      multiStep: true
+    })
+    // TODO: What is this?
+    // new webpack.NoEmitOnErrorsPlugin(),
   ],
 
   node: {
@@ -76,7 +83,7 @@ export default merge.smart(baseConfig, {
     // stats: "errors-only",
     // inline: true,
     lazy: false,
-    // hot: true,
+    hot: true,
     headers: { "Access-Control-Allow-Origin": "*" },
     watchOptions: {
       aggregateTimeout: 500,
