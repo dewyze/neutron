@@ -1,23 +1,23 @@
-import baseConfig from './webpack.config.base';
-import merge from 'webpack-merge';
-import path from 'path';
-import webpack from 'webpack';
+import baseConfig from "./webpack.config.base";
+import merge from "webpack-merge";
+import path from "path";
+import webpack from "webpack";
 
-const dist = path.join(__dirname, '..', 'dist');
-const dll = path.join(__dirname, '..', 'dll');
-const manifest = path.resolve(dll, 'renderer.json');
+const dist = path.join(__dirname, "..", "dist");
+const dll = path.join(__dirname, "..", "dll");
+const manifest = path.resolve(dll, "renderer.json");
 
 export default merge.smart(baseConfig, {
-  devtool: 'inline-source-map',
-  target: 'electron-renderer',
+  devtool: "inline-source-map",
+  target: "electron-renderer",
 
   output: {
     path: dist,
-    filename: 'renderer.dev.js'
+    filename: "renderer.dev.js"
   },
 
   entry: {
-    filename: './renderer.js'
+    filename: "./renderer.js"
   },
 
   module: {
@@ -25,21 +25,21 @@ export default merge.smart(baseConfig, {
       // Common Image Formats
       {
         test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/,
-        use: 'url-loader'
+        use: "url-loader"
       }
     ]
   },
 
   plugins: [
     new webpack.DllReferencePlugin({
-      context: path.join(__dirname, '..', 'dll'),
+      context: path.join(__dirname, "..", "dll"),
       manifest: require(manifest),
-      sourceType: 'var'
-    }),
+      sourceType: "var"
+    })
   ],
 
   node: {
     __dirname: false,
     __filename: false
-  },
+  }
 });
