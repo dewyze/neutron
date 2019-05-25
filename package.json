@@ -5,10 +5,10 @@
   "description": "Electron base",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
-    "build": "npm run build-dev && npm run build-dll",
-    "build-dev": "webpack --config ./configs/webpack.config.renderer.dev.babel.js",
-    "build-dll": "webpack --config ./configs/webpack.config.renderer.dev.dll.babel.js"
+    "start": "NODE_ENV=development electron .",
+    "build": "npm run build-dll && npm run build-dev",
+    "build-dev": "NODE_ENV=development webpack --config ./configs/webpack.config.renderer.dev.babel.js",
+    "build-dll": "NODE_ENV=development webpack --config ./configs/webpack.config.renderer.dev.dll.babel.js"
   },
   "repository": {
     "type": "git",
@@ -24,18 +24,21 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.4.4",
     "babel-loader": "^8.0.6",
     "chalk": "^2.4.2",
-    "electron": "^5.0.1",
-    "webpack": "^4.31.0",
+    "electron": "^5.0.2",
+    "electron-devtools-installer": "^2.2.4",
+    "install": "^0.12.2",
+    "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2",
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "concurrently": "^4.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }
