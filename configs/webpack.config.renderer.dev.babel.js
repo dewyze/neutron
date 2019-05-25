@@ -1,11 +1,16 @@
 import baseConfig from "./webpack.config.base";
 import chalk from "chalk";
-import { execSync } from "child_process";
+import { execSync, spawn } from "child_process";
 import fs from "fs";
 import merge from "webpack-merge";
 import path from "path";
 import webpack from "webpack";
+import CheckNodeEnv from "../internals/scripts/CheckNodeEnv";
 
+CheckNodeEnv("development");
+
+const port = process.env.PORT || 1212;
+const publicPath = `http://localhost:${port}/dist`;
 const dist = path.join(__dirname, "..", "dist");
 const dll = path.join(__dirname, "..", "dll");
 const manifest = path.resolve(dll, "renderer.json");
@@ -61,5 +66,39 @@ export default merge.smart(baseConfig, {
   node: {
     __dirname: false,
     __filename: false
+  },
+
+  devServer: {
+    port,
+    publicPath,
+    compress: true,
+    // noInfo: true,
+    // stats: "errors-only",
+    // inline: true,
+    lazy: false,
+    // hot: true,
+    headers: { "Access-Control-Allow-Origin": "*" },
+    watchOptions: {
+      aggregateTimeout: 500,
+      ignored: /node_modules/,
+      poll: 1000
+    },
+    historyApiFallback: {
+      verbose: true,
+      disableDotRule: "false"
+    },
+    contentBase: path.join(__dirname, "dist"),
+    before() {
+      if (process.env.START_HOT) {
+        console.log("Starting Main Process...");
+        spawn("npm", ["run", "start-main-dev"], {
+          shell: true,
+          env: process.env,
+          stdio: "inherit"
+        })
+          .on("close", code => process.exit(code))
+          .on("error", spawnError => console.error(spawnError));
+      }
+    }
   }
 });
