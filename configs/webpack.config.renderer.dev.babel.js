@@ -42,7 +42,7 @@ export default merge.smart(baseConfig, {
   entry: [
     `webpack-dev-server/client?http://localhost:${port}/`,
     "webpack/hot/only-dev-server",
-    require.resolve("../renderer.js")
+    require.resolve("../app/index.js")
   ],
 
   module: {
