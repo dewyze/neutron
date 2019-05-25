@@ -1,34 +1,34 @@
-import baseConfig from './webpack.config.base';
-import merge from 'webpack-merge';
-import path from 'path';
-import webpack from 'webpack';
-import { dependencies } from '../package.json';
+import baseConfig from "./webpack.config.base";
+import merge from "webpack-merge";
+import path from "path";
+import webpack from "webpack";
+import { dependencies } from "../package.json";
 
-const dist = path.join(__dirname, '..', 'dll');
+const dist = path.join(__dirname, "..", "dll");
 
 export default merge.smart(baseConfig, {
-  context: path.join(__dirname, '..'),
-  devtool: 'eval',
-  mode: 'development',
-  target: 'electron-renderer',
+  context: path.join(__dirname, ".."),
+  devtool: "eval",
+  mode: "development",
+  target: "electron-renderer",
 
-  module: require('./webpack.config.renderer.dev.babel').default.module,
+  module: require("./webpack.config.renderer.dev.babel").default.module,
 
   entry: {
     renderer: Object.keys(dependencies || {})
   },
 
   output: {
-    library: 'renderer',
+    library: "renderer",
     path: dist,
-    filename: '[name].dev.dll.js',
-    libraryTarget: 'var'
+    filename: "[name].dev.dll.js",
+    libraryTarget: "var"
   },
 
   plugins: [
     new webpack.DllPlugin({
-      path: path.join(dist, '[name].json'),
-      name: '[name]'
-    }),
+      path: path.join(dist, "[name].json"),
+      name: "[name]"
+    })
   ]
 });
