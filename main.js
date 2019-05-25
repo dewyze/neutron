@@ -1,6 +1,18 @@
 const { app, BrowserWindow } = require("electron");
+const os = require("os");
+const path = require("path");
 
 let mainWindow;
+
+const installExtensions = async () => {
+  const installer = require("electron-devtools-installer");
+  const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
+  const extensions = ["REACT_DEVELOPER_TOOLS", "REDUX_DEVTOOLS"];
+
+  return Promise.all(
+    extensions.map(name => installer.default(installer[name], forceDownload))
+  ).catch(console.log);
+};
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -20,7 +32,16 @@ function createWindow() {
   });
 }
 
-app.on("ready", createWindow);
+app.on("ready", async () => {
+  if (
+    process.env.NODE_ENV === "development" ||
+    process.env.DEBUG_PROD === "true"
+  ) {
+    await installExtensions();
+  }
+
+  createWindow();
+});
 
 app.on("window-all-closed", function() {
   if (process.platform !== "darwin") app.quit();
