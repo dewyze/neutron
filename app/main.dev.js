@@ -4,6 +4,11 @@ const path = require("path");
 
 let mainWindow;
 
+if (process.env.NODE_ENV === "production") {
+  const sourceMapSupport = require("source-map-support");
+  sourceMapSupport.install();
+}
+
 const installExtensions = async () => {
   const installer = require("electron-devtools-installer");
   const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
@@ -23,9 +28,7 @@ function createWindow() {
     }
   });
 
-  mainWindow.loadFile("app/index.html");
-
-  mainWindow.webContents.openDevTools();
+  mainWindow.loadURL(`file://${__dirname}/index.html`);
 
   mainWindow.on("closed", function() {
     mainWindow = null;
@@ -41,6 +44,7 @@ app.on("ready", async () => {
   }
 
   createWindow();
+  mainWindow.webContents.openDevTools();
 });
 
 app.on("window-all-closed", function() {

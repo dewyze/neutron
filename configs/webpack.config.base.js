@@ -23,11 +23,11 @@ export default {
   },
   plugins: [
     new webpack.EnvironmentPlugin({
-      NODE_ENV: "development"
+      NODE_ENV: "production"
     })
   ],
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx", ".json"]
   },
   output: {
     path: path.join(__dirname, "dist"),

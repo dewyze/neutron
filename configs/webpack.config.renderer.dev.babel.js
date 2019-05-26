@@ -33,6 +33,11 @@ if (!requiredByDLLConfig && !(fs.existsSync(dll) && fs.existsSync(manifest))) {
 export default merge.smart(baseConfig, {
   devtool: "inline-source-map",
   target: "electron-renderer",
+  resolve: {
+    alias: {
+      "react-dom": "@hot-loader/react-dom"
+    }
+  },
 
   output: {
     publicPath: `http://localhost:${port}/dist/`,
@@ -40,6 +45,7 @@ export default merge.smart(baseConfig, {
   },
 
   entry: [
+    "react-hot-loader/patch",
     `webpack-dev-server/client?http://localhost:${port}/`,
     "webpack/hot/only-dev-server",
     require.resolve("../app/index.js")
@@ -65,6 +71,9 @@ export default merge.smart(baseConfig, {
         }),
     new webpack.HotModuleReplacementPlugin({
       multiStep: true
+    }),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: "development"
     })
     // TODO: What is this?
     // new webpack.NoEmitOnErrorsPlugin(),

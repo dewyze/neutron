@@ -11,9 +11,12 @@ export default merge.smart(baseConfig, {
   devtool: "eval",
   mode: "development",
   target: "electron-renderer",
-
+  resolve: {
+    alias: {
+      "react-dom": "@hot-loader/react-dom"
+    }
+  },
   module: require("./webpack.config.renderer.dev.babel").default.module,
-
   entry: {
     renderer: Object.keys(dependencies || {})
   },
@@ -29,6 +32,9 @@ export default merge.smart(baseConfig, {
     new webpack.DllPlugin({
       path: path.join(dist, "[name].json"),
       name: "[name]"
+    }),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: "development"
     })
   ]
 });

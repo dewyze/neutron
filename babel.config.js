@@ -1,6 +1,13 @@
-const developmentEnvironments = ["development", "test"];
-
+const developmentEnvironments = ["development", "dev", "test"];
 const developmentPlugins = [require("react-hot-loader/babel")];
+const productionPlugins = [
+  require("babel-plugin-dev-expression"),
+
+  // babel-preset-react-optimize
+  require("@babel/plugin-transform-react-constant-elements"),
+  require("@babel/plugin-transform-react-inline-elements"),
+  require("babel-plugin-transform-react-remove-prop-types")
+];
 
 module.exports = api => {
   const development = api.env(developmentEnvironments);
