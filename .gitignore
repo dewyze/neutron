@@ -1,6 +1,7 @@
 node_modules
 dist
 dll
+release
 
 app/main.prod.js
 app/main.prod.js.map
