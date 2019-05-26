@@ -1,0 +1,25 @@
+{
+  "name": "neutron",
+  "productName": "Neutron",
+  "version": "0.0.1",
+  "description": "Electron skeleton",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dewyze/neutron"
+  },
+  "author": {
+    "name": "Electron React Boilerplte Maintainers",
+    "email": "neutron@dewyze.io"
+  },
+  "devEngines": {
+    "node": ">=10.15.3",
+    "npm": ">=5.x"
+  },
+  "devDependencies": {
+    "electron": "^5.0.1"
+  }
+}
