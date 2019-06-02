@@ -13,7 +13,7 @@
     "dev": "START_HOT=1 npm run start-renderer-dev",
     "package": "npm run build && electron-builder build -m",
     "postinstall": "electron-builder install-app-deps",
-    "start-main-dev": "HOT=1 NODE_ENV=development electron ./app/main.dev.js",
+    "start-main-dev": "HOT=1 NODE_ENV=development electron -r @babel/register ./app/main.dev.js",
     "start-renderer-dev": "NODE_ENV=development webpack-dev-server --config configs/webpack.config.renderer.dev.babel.js"
   },
   "main": "./app/main.prod.js",
@@ -103,9 +103,9 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "@hot-loader/react-dom": "^16.8.6",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "@hot-loader/react-dom": "^16.8.6",
     "source-map-support": "^0.5.12"
   }
 }
