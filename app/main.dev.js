@@ -20,19 +20,9 @@ const installExtensions = async () => {
 }
 
 function createWindow() {
-  mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      nodeIntegration: true
-    }
-  });
+  mainWindow = require("./main/mainWindow")
 
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
-
-  mainWindow.on("closed", function() {
-    mainWindow = null;
-  });
+  mainWindow.loadURL(`file://${__dirname}/index.html`)
 }
 
 app.on("ready", async () => {
