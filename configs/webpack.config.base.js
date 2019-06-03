@@ -28,6 +28,12 @@ export default {
   ],
   resolve: {
     extensions: [".js", ".jsx", ".json"],
+    alias: {
+      app: path.join(__dirname, "app"),
+      reducers: path.join(__dirname, "app", "reducers"),
+      api: path.join(__dirname, "app", "api"),
+      main: path.join(__dirname, "app", "main"),
+    },
   },
   output: {
     path: path.join(__dirname, "dist"),
