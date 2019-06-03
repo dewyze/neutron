@@ -1,22 +1,22 @@
-import baseConfig from "./webpack.config.base";
-import chalk from "chalk";
-import { execSync, spawn } from "child_process";
-import fs from "fs";
-import merge from "webpack-merge";
-import path from "path";
-import webpack from "webpack";
-import CheckNodeEnv from "../internals/scripts/CheckNodeEnv";
+import baseConfig from "./webpack.config.base"
+import chalk from "chalk"
+import { execSync, spawn } from "child_process"
+import fs from "fs"
+import merge from "webpack-merge"
+import path from "path"
+import webpack from "webpack"
+import CheckNodeEnv from "../internals/scripts/CheckNodeEnv"
 
-CheckNodeEnv("development");
+CheckNodeEnv("development")
 
-const port = process.env.PORT || 1212;
-const publicPath = `http://localhost:${port}/dist`;
-const dist = path.join(__dirname, "..", "dist");
-const dll = path.join(__dirname, "..", "dll");
-const manifest = path.resolve(dll, "renderer.json");
+const port = process.env.PORT || 1212
+const publicPath = `http://localhost:${port}/dist`
+const dist = path.join(__dirname, "..", "dist")
+const dll = path.join(__dirname, "..", "dll")
+const manifest = path.resolve(dll, "renderer.json")
 const requiredByDLLConfig = module.parent.filename.includes(
   "webpack.config.renderer.dev.dll"
-);
+)
 
 /**
  * Warn if the DLL is not built
@@ -26,8 +26,8 @@ if (!requiredByDLLConfig && !(fs.existsSync(dll) && fs.existsSync(manifest))) {
     chalk.black.bgYellow.bold(
       'The DLL files are missing. Sit back while we build them for you with "npm run build-dll"'
     )
-  );
-  execSync("npm run build-dll");
+  )
+  execSync("npm run build-dll")
 }
 
 export default merge.smart(baseConfig, {
@@ -35,20 +35,20 @@ export default merge.smart(baseConfig, {
   target: "electron-renderer",
   resolve: {
     alias: {
-      "react-dom": "@hot-loader/react-dom"
-    }
+      "react-dom": "@hot-loader/react-dom",
+    },
   },
 
   output: {
     publicPath: `http://localhost:${port}/dist/`,
-    filename: "renderer.dev.js"
+    filename: "renderer.dev.js",
   },
 
   entry: [
     "react-hot-loader/patch",
     `webpack-dev-server/client?http://localhost:${port}/`,
     "webpack/hot/only-dev-server",
-    require.resolve("../app/index.js")
+    require.resolve("../app/index.js"),
   ],
 
   module: {
@@ -56,9 +56,9 @@ export default merge.smart(baseConfig, {
       // Common Image Formats
       {
         test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/,
-        use: "url-loader"
-      }
-    ]
+        use: "url-loader",
+      },
+    ],
   },
 
   plugins: [
@@ -67,21 +67,21 @@ export default merge.smart(baseConfig, {
       : new webpack.DllReferencePlugin({
           context: path.join(__dirname, "..", "dll"),
           manifest: require(manifest),
-          sourceType: "var"
+          sourceType: "var",
         }),
     new webpack.HotModuleReplacementPlugin({
-      multiStep: true
+      multiStep: true,
     }),
     new webpack.EnvironmentPlugin({
-      NODE_ENV: "development"
-    })
+      NODE_ENV: "development",
+    }),
     // TODO: What is this?
     // new webpack.NoEmitOnErrorsPlugin(),
   ],
 
   node: {
     __dirname: false,
-    __filename: false
+    __filename: false,
   },
 
   devServer: {
@@ -97,24 +97,24 @@ export default merge.smart(baseConfig, {
     watchOptions: {
       aggregateTimeout: 500,
       ignored: /node_modules/,
-      poll: 1000
+      poll: 1000,
     },
     historyApiFallback: {
       verbose: true,
-      disableDotRule: "false"
+      disableDotRule: "false",
     },
     contentBase: path.join(__dirname, "dist"),
     before() {
       if (process.env.START_HOT) {
-        console.log("Starting Main Process...");
+        console.log("Starting Main Process...")
         spawn("npm", ["run", "start-main-dev"], {
           shell: true,
           env: process.env,
-          stdio: "inherit"
+          stdio: "inherit",
         })
           .on("close", code => process.exit(code))
-          .on("error", spawnError => console.error(spawnError));
+          .on("error", spawnError => console.error(spawnError))
       }
-    }
-  }
-});
+    },
+  },
+})
