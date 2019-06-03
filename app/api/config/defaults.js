@@ -12,6 +12,14 @@ export default {
         // minimum: 400,
         default: 600,
       },
+      x: {
+        type: ["integer", "null"],
+        default: null,
+      },
+      y: {
+        type: ["integer", "null"],
+        default: null,
+      },
     },
   },
 }
