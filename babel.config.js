@@ -25,6 +25,17 @@ module.exports = api => {
       ["@babel/preset-react", { development }],
     ],
     plugins: [
+      [
+        require("babel-plugin-module-resolver"),
+        {
+          root: ["./app/"],
+          alias: {
+            "react-dom": "@hot-loader/react-dom",
+            api: "./app/api",
+            main: "./app/main",
+          },
+        },
+      ],
       // Stage 0
       require("@babel/plugin-proposal-function-bind"),
 

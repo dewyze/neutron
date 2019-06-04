@@ -33,11 +33,6 @@ if (!requiredByDLLConfig && !(fs.existsSync(dll) && fs.existsSync(manifest))) {
 export default merge.smart(baseConfig, {
   devtool: "inline-source-map",
   target: "electron-renderer",
-  resolve: {
-    alias: {
-      "react-dom": "@hot-loader/react-dom",
-    },
-  },
 
   output: {
     publicPath: `http://localhost:${port}/dist/`,

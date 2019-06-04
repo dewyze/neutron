@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from "electron"
 import os from "os"
 import path from "path"
+import Window from "main/Window"
 
 let mainWindow
 
@@ -20,7 +21,7 @@ const installExtensions = async () => {
 }
 
 function createWindow() {
-  mainWindow = require("./main/mainWindow")
+  mainWindow = new Window()
 
   mainWindow.loadURL(`file://${__dirname}/index.html`)
 }
