@@ -109,6 +109,7 @@
     "lodash": "^4.17.11",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
     "source-map-support": "^0.5.12"
   }
 }
