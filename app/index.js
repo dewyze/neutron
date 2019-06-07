@@ -1,8 +1,11 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import { Provider } from "react-redux"
-import { store } from "./store"
+import configureStore, { history } from "./store"
 import { AppContainer } from "react-hot-loader"
+import { ConnectedRouter } from "connected-react-router"
+import { Provider } from "react-redux"
+
+const store = configureStore()
 
 import Root from "./containers/Root"
 
@@ -10,7 +13,11 @@ const render = Component => {
   ReactDOM.render(
     <Provider store={store}>
       <AppContainer>
-        <Component />
+        <ConnectedRouter history={history}>
+          {" "}
+          {/* place ConnectedRouter under Provider */}
+          <Component />
+        </ConnectedRouter>
       </AppContainer>
     </Provider>,
     document.getElementById("root")

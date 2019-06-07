@@ -105,6 +105,7 @@
   },
   "dependencies": {
     "@hot-loader/react-dom": "^16.8.6",
+    "connected-react-router": "^6.4.0",
     "electron-store": "^3.2.0",
     "lodash": "^4.17.11",
     "react": "^16.8.6",
