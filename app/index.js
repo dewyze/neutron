@@ -1,11 +1,9 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import configureStore, { history } from "./store"
+import { store, history } from "./store"
 import { AppContainer } from "react-hot-loader"
 import { ConnectedRouter } from "connected-react-router"
 import { Provider } from "react-redux"
-
-const store = configureStore()
 
 import Root from "./containers/Root"
 
