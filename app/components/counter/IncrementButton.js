@@ -1,5 +1,5 @@
-import React, { useState } from "react"
+import React from "react"
 
-export default function IncrementButton(state) {
-  return <button onClick={state.onIncrement}>Increment Component</button>
-}
+export const IncrementButton = React.memo(({ onIncrement }) => (
+  <button onClick={onIncrement}>Increment Component</button>
+))

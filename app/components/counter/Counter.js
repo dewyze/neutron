@@ -1,17 +1,25 @@
-import React, { useState, useEffect } from "react"
-import IncrementButton from "components/counter/IncrementButton"
+import React, { useCallback } from "react"
+import { INCREMENT_COUNTER, DECREMENT_COUNTER } from "actions/types"
+import { useSelector, useDispatch } from "react-redux"
+import { IncrementButton } from "components/counter/IncrementButton"
+import { DecrementButton } from "components/counter/DecrementButton"
 
 export default function Counter() {
-  const [count, setCount] = useState(0)
-  const onIncrement = () => {
-    setCount(count + 1)
-  }
+  const dispatch = useDispatch()
+  const count = useSelector(state => state.counter.value)
+
+  const onIncrement = useCallback(() => dispatch({ type: INCREMENT_COUNTER }), [
+    dispatch,
+  ])
+  const onDecrement = useCallback(() => dispatch({ type: DECREMENT_COUNTER }), [
+    dispatch,
+  ])
 
   return (
     <div>
       <h1>Counter: {count}</h1>
       <IncrementButton onIncrement={onIncrement} />
-      <button onClick={() => setCount(count - 1)}>Decrement</button>
+      <DecrementButton onDecrement={onDecrement} />
     </div>
   )
 }

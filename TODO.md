@@ -1,6 +1,7 @@
 ## Linting
 - [ ] ESlint?
 - [ ] Update prettier config
+- [ ] Use eslint-plugin-react-hooks
 
 ## Webpack
 - [x] Add webpack merge
