@@ -32,6 +32,7 @@ module.exports = api => {
           alias: {
             "react-dom": "@hot-loader/react-dom",
             api: "./app/api",
+            components: "./app/components",
             main: "./app/main",
           },
         },

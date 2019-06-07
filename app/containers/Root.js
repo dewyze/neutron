@@ -1,33 +1,31 @@
 import * as React from "react"
-import { Component } from "react"
-import ReactDOM from "react-dom"
+import Counter from "components/counter/Counter"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 
-export default class Root extends React.Component {
-  render() {
-    return (
-      <Router>
-        <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/topics">Topics</Link>
-            </li>
-          </ul>
+export default function Root() {
+  return (
+    <Router>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/topics">Topics</Link>
+          </li>
+        </ul>
 
-          <hr />
+        <hr />
 
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-        </div>
-      </Router>
-    )
-  }
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Counter />
+      </div>
+    </Router>
+  )
 }
 
 function Home() {
