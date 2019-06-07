@@ -1,5 +1,6 @@
 import * as React from "react"
 import Counter from "components/counter/Counter"
+import { BackButton } from "components/counter/BackButton"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 
 export default function Root() {
@@ -23,6 +24,7 @@ export default function Root() {
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
         <Counter />
+        <BackButton />
       </div>
     </Router>
   )
