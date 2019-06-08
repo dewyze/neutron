@@ -1,6 +1,4 @@
-import { app, BrowserWindow } from "electron"
-import os from "os"
-import path from "path"
+import { app } from "electron"
 import Window from "main/Window"
 
 let mainWindow
@@ -17,7 +15,7 @@ const installExtensions = async () => {
 
   return Promise.all(
     extensions.map(name => installer.default(installer[name], forceDownload))
-  ).catch(console.log)
+  ).catch(console.log) // eslint-disable-line no-console
 }
 
 function createWindow() {

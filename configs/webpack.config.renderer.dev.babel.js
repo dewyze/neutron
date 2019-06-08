@@ -98,7 +98,7 @@ export default merge.smart(baseConfig, {
       verbose: true,
       disableDotRule: "false",
     },
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: dist,
     before() {
       if (process.env.START_HOT) {
         console.log("Starting Main Process...")

@@ -1,4 +1,3 @@
-import { app } from "electron"
 import schema from "./defaults"
 import Store from "electron-store"
 

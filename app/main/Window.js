@@ -31,6 +31,8 @@ export default class Window {
   setWindowSize() {
     try {
       config.set("windowSize", this.getBounds())
-    } catch (e) {}
+    } catch (e) {
+      console.log(e) // eslint-disable-line no-console
+    }
   }
 }

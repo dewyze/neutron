@@ -1,4 +1,4 @@
-import { goBack, push } from "connected-react-router"
+import { goBack } from "connected-react-router"
 
 import { store } from "store"
 
