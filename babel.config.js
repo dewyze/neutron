@@ -7,6 +7,10 @@ const productionPlugins = [
   require("@babel/plugin-transform-react-constant-elements"),
   require("@babel/plugin-transform-react-inline-elements"),
   require("babel-plugin-transform-react-remove-prop-types"),
+  [
+    require("babel-plugin-react-remove-properties"),
+    { properties: ["data-testid"] },
+  ],
 ]
 
 module.exports = api => {

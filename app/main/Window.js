@@ -1,5 +1,5 @@
 import { BrowserWindow } from "electron"
-import Config from "../api/config"
+import Config from "api/config"
 import { throttle } from "lodash"
 
 const config = new Config()

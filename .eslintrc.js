@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    jest: true,
     node: true,
   },
   extends: [
@@ -9,10 +10,13 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
+    "plugin:jest/recommended",
   ],
   globals: {
     Atomics: "readonly",
     SharedArrayBuffer: "readonly",
+    "jest/globals": true,
+    reduxRender: "readonly",
   },
   parserOptions: {
     ecmaFeatures: {
@@ -21,7 +25,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module",
   },
-  plugins: ["react", "react-hooks"],
+  plugins: ["react", "react-hooks", "jest"],
   rules: {
     "react/display-name": "off",
     "no-console": ["error", { allow: ["warn", "error"] }],

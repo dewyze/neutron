@@ -17,7 +17,7 @@ export default function Counter() {
 
   return (
     <div>
-      <h1>Counter: {count}</h1>
+      <h1 data-testid="counter">Counter: {count}</h1>
       <IncrementButton onIncrement={onIncrement} />
       <DecrementButton onDecrement={onDecrement} />
     </div>
