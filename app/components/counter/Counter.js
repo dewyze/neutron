@@ -3,7 +3,7 @@ import { INCREMENT_COUNTER, DECREMENT_COUNTER } from "actions/types"
 import { useSelector, useDispatch } from "react-redux"
 import { IncrementButton } from "components/counter/IncrementButton"
 import { DecrementButton } from "components/counter/DecrementButton"
-import styles from "./Counter.css"
+import styles from "./Counter.scss"
 
 export default function Counter() {
   const dispatch = useDispatch()
