@@ -6,6 +6,7 @@ import { ConnectedRouter } from "connected-react-router"
 import { Provider } from "react-redux"
 
 import Root from "./containers/Root"
+import "./app.global.scss"
 
 const render = Component => {
   ReactDOM.render(
