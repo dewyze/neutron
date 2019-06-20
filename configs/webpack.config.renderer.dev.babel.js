@@ -116,7 +116,7 @@ export default merge.smart(baseConfig, {
           {
             loader: "sass-loader",
             options: {
-              data: '@import "vars.global";',
+              data: '@import "app.global";',
               includePaths: [path.resolve(__dirname, "../app")],
             },
           },

@@ -104,7 +104,7 @@ export default merge.smart(baseConfig, {
             loader: "sass-loader",
             options: {
               sourceMap: true,
-              data: '@import "vars.global";',
+              data: '@import "app.global";',
               includePaths: [path.resolve(__dirname, "../app")],
             },
           },
